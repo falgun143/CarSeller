@@ -52,8 +52,8 @@ const AddCar = () => {
           userId: id,
         });
         toast.success("Car added successfully");
+        toast.success("Redirecting to cars Page....");
         setTimeout(() => {
-          toast.success("Redirecting to cars Page");
           router.push("/getcars");
         }, 3000);
       }
@@ -94,7 +94,7 @@ const AddCar = () => {
 
   return (
     <>
-      <ToastContainer theme="dark" />
+      <ToastContainer theme="dark" autoClose={3000} />
       <Box
         sx={{
           display: "flex",
@@ -161,7 +161,7 @@ const AddCar = () => {
                   paddingBottom: "16px",
                 },
                 "& .MuiInputLabel-root": {
-                  top: "-10px", 
+                  top: "-10px",
                 },
               }}
               color="success"

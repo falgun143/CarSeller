@@ -18,6 +18,6 @@ export async function DELETE(request: NextRequest) {
     return NextResponse.json({ message: "Car Deleted successfully" });
   } catch (error) {
     console.error("Error updating car:", error);
-    return NextResponse.json({ error: "Error updating car" }, { status: 500 });
+    return NextResponse.json({ error: "Error Deleting the car" }, { status: 500 });
   }
 }
