@@ -9,7 +9,7 @@ import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { decode_jwt } from "@falgunpal/jwt-helper-ts";
 
-const login = () => {
+const Login = () => {
   const [username, Setusername] = useState("");
   const [password, SetPassword] = useState("");
   const router = useRouter();
@@ -118,4 +118,4 @@ const login = () => {
   );
 };
 
-export default login;
+export default Login;
