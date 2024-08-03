@@ -13,13 +13,13 @@ export async function PUT(request: NextRequest) {
   }
 
   // Parse JSON body
-  const { carname, manufacturingyear, price, image } = await request.json();
+  const { carname, manufacturingdate, price, image } = await request.json();
 
   try {
     // Update the car record
     const updatedCar = await prisma.cars.update({
       where: { id },
-      data: { carname, manufacturingyear, price, image },
+      data: { carname, manufacturingdate, price, image },
     });
 
     // Return the updated car record
