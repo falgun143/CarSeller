@@ -28,8 +28,8 @@ const CarDetailsModal: React.FC<CarDetailsModalProps> = ({
   userRole,
 }) => {
   const [carname, setCarname] = useState(car?.carname || "");
-  const [manufacturingyear, setManufacturingyear] = useState(
-    car?.manufacturingyear || ""
+  const [manufacturingdate, setManufacturingdate] = useState(
+    car?.manufacturingdate || ""
   );
   const [price, setPrice] = useState(car?.price || "");
   const [image, setImage] = useState(car?.image || "");
@@ -40,7 +40,7 @@ const CarDetailsModal: React.FC<CarDetailsModalProps> = ({
     try {
       const response = await axios.put(`/api/car/${car.id}`, {
         carname,
-        manufacturingyear,
+        manufacturingdate,
         price,
         image,
       });
@@ -112,8 +112,8 @@ const CarDetailsModal: React.FC<CarDetailsModalProps> = ({
             variant="outlined"
             fullWidth
             type="date"
-            value={manufacturingyear}
-            onChange={(e) => setManufacturingyear(e.target.value)}
+            value={manufacturingdate}
+            onChange={(e) => setManufacturingdate(e.target.value)}
             sx={{ marginBottom: 2 }}
             color="success"
           />

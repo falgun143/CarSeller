@@ -20,7 +20,7 @@ import "react-toastify/dist/ReactToastify.css";
 export type Car = {
   id: number;
   carname: string;
-  manufacturingyear: string;
+  manufacturingdate: string;
   price: string;
   image: string;
   userId: number;

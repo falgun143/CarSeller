@@ -12,21 +12,19 @@ CREATE TABLE "User" (
 );
 
 -- CreateTable
-CREATE TABLE "Courses" (
+CREATE TABLE "Cars" (
     "id" SERIAL NOT NULL,
-    "title" TEXT NOT NULL,
-    "content" TEXT NOT NULL,
-    "published" BOOLEAN NOT NULL DEFAULT false,
+    "carname" TEXT NOT NULL,
+    "manufacturingdate" TEXT NOT NULL,
+    "price" TEXT NOT NULL,
+    "image" TEXT NOT NULL,
     "userId" TEXT NOT NULL,
-    "startDate" TEXT NOT NULL,
-    "endDate" TEXT NOT NULL,
-    "feedback" TEXT[] DEFAULT ARRAY[]::TEXT[],
 
-    CONSTRAINT "Courses_pkey" PRIMARY KEY ("id")
+    CONSTRAINT "Cars_pkey" PRIMARY KEY ("id")
 );
 
 -- CreateIndex
 CREATE UNIQUE INDEX "User_email_key" ON "User"("email");
 
 -- AddForeignKey
-ALTER TABLE "Courses" ADD CONSTRAINT "Courses_userId_fkey" FOREIGN KEY ("userId") REFERENCES "User"("id") ON DELETE RESTRICT ON UPDATE CASCADE;
+ALTER TABLE "Cars" ADD CONSTRAINT "Cars_userId_fkey" FOREIGN KEY ("userId") REFERENCES "User"("id") ON DELETE RESTRICT ON UPDATE CASCADE;

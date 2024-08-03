@@ -12,7 +12,7 @@ import "react-toastify/dist/ReactToastify.css";
 const AddCar = () => {
   const { login } = useLogin();
   const [carname, setCarname] = useState("");
-  const [manufacturingDate, setManufacturingDate] = useState("");
+  const [manufacturingdate, setManufacturingDate] = useState("");
   const [price, setPrice] = useState("");
   const [image, setImage] = useState("");
   const [isClient, setIsClient] = useState(false); // State to track if client-side rendering
@@ -46,7 +46,7 @@ const AddCar = () => {
         const { id } = decode_jwt(process.env.NEXT_PUBLIC_JWT_SECRET, token);
         await axios.post("/api/addcar", {
           carname,
-          manufacturingDate,
+          manufacturingdate,
           price,
           image,
           userId: id,

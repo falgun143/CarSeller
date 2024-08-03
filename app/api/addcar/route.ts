@@ -3,17 +3,19 @@ import prisma from "../../../lib/prisma";
 
 
 export async function POST(request: NextRequest) {
-    const { carname, manufacturingDate, price,image,userId,} = await request.json();
+    const { carname, manufacturingdate, price,image,userId} = await request.json();
     try{
-         await prisma.cars.create({ 
+        console.log(carname, manufacturingdate, price,image,userId)
+        const result = await prisma.cars.create({ 
            data:{
             carname,
-            manufacturingyear:manufacturingDate,
+           manufacturingdate,
             price,
             image,
             userId
            }
         });
+        console.log(result)
        return NextResponse.json({message:"Added Car Successfully"},{status:200},)
 
     }
