@@ -1,26 +1,13 @@
-"use client"
+"use client";
 import { Button, AppBar as MuiAppBar, Box, Typography } from "@mui/material";
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { useRouter } from "next/navigation";
 import Cookies from "js-cookie";
 import { useLogin } from "../context/LoginContext";
-import { decode_jwt } from "@falgunpal/jwt-helper-ts";
 
 const Appbar = ({ children }: { children: React.ReactNode }) => {
   const router = useRouter();
-  const { login, setLogin } = useLogin();
-  const [mounted, setMounted] = useState(false);
-
-  useEffect(() => {
-    setMounted(true);
-  }, []);
-
-  const token = Cookies.get("token");
-  let role;
-  if (token && process.env.NEXT_PUBLIC_JWT_SECRET) {
-    const { payload } = decode_jwt(process.env.NEXT_PUBLIC_JWT_SECRET, token);
-    role = payload.role;
-  }
+  const { login, setLogin, role } = useLogin();
 
   const handleLogout = () => {
     Cookies.remove("token");
@@ -28,13 +15,9 @@ const Appbar = ({ children }: { children: React.ReactNode }) => {
     router.push("/");
   };
 
-  if (!mounted) {
-    return null;
-  }
-
   return (
     <>
-      <MuiAppBar position="static" style={{backgroundColor:"#34c300"}} >
+      <MuiAppBar position="static" style={{ backgroundColor: "#34c300" }}>
         <Box
           sx={{
             display: "flex",
@@ -72,32 +55,35 @@ const Appbar = ({ children }: { children: React.ReactNode }) => {
           >
             {login ? (
               <>
-                <Button variant="contained" onClick={handleLogout} style={{backgroundColor:"#36cc00"}} >
+                <Button
+                  variant="contained"
+                  onClick={handleLogout}
+                  style={{ backgroundColor: "#36cc00" }}
+                >
                   Logout
                 </Button>
 
                 {role === "ADMIN" && (
                   <Button
-                  style={{backgroundColor:"#36cc00"}}
+                    style={{ backgroundColor: "#36cc00" }}
                     variant="contained"
                     onClick={() => {
-                      router.push("/addcourse");
+                      router.push("/addcar");
                     }}
                   >
-                    AddCourses
+                    AddCar
                   </Button>
                 )}
-                       {role === "USER" && (
-                  <Button
-                    variant="contained"
-                    onClick={() => {
-                      router.push("/courses");
-                    }}
-                    style={{backgroundColor:"#36cc00"}}
-                  >
-                    COURSES
-                  </Button>
-                )}
+
+                <Button
+                  variant="contained"
+                  onClick={() => {
+                    router.push("/getcars");
+                  }}
+                  style={{ backgroundColor: "#36cc00" }}
+                >
+                  VIEWCARS
+                </Button>
               </>
             ) : (
               <>
@@ -106,7 +92,7 @@ const Appbar = ({ children }: { children: React.ReactNode }) => {
                   onClick={() => {
                     router.push("/login");
                   }}
-                  style={{backgroundColor:"#36cc00"}}
+                  style={{ backgroundColor: "#36cc00" }}
                 >
                   Login
                 </Button>
@@ -115,7 +101,7 @@ const Appbar = ({ children }: { children: React.ReactNode }) => {
                   onClick={() => {
                     router.push("/signup");
                   }}
-                  style={{backgroundColor:"#36cc00"}}
+                  style={{ backgroundColor: "#36cc00" }}
                 >
                   SignUp
                 </Button>

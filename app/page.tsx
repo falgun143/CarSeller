@@ -1,34 +1,58 @@
-import Image from "next/image";
-import { Grid, Typography } from "@mui/material";
+"use client"
+import React from 'react';
+import { Grid, Typography, Container, useMediaQuery, Theme } from '@mui/material';
+import { useTheme } from '@mui/material/styles';
 
 export default function Home() {
-  return (
-    <Grid
-      container
-      style={{
-        padding: "5vw",
+  const theme = useTheme();
+  const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
 
+  return (
+    <Container
+      maxWidth="lg"
+      sx={{
+        padding: isMobile ? '2vw' : '5vw',
+        textAlign: isMobile ? 'center' : 'left',
       }}
-      alignItems="center"
     >
-      <Grid item xs={12} md={6} lg={6}>
-        <Typography variant="h2">
-          Assignment for Quadiro Technologies
-        </Typography>
+      <Grid container spacing={4} alignItems="center" justifyContent="center">
+        <Grid item xs={12} md={6}>
+          <Typography
+            variant={isMobile ? 'h4' : 'h2'}
+            component="h1"
+            sx={{
+              fontWeight: 'bold',
+              color: '#333',
+              marginBottom: 4,
+              textAlign: isMobile ? 'center' : 'left',
+            }}
+          >
+            Assignment for Quadiro Technologies
+          </Typography>
+        </Grid>
+        <Grid
+          item
+          xs={12}
+          md={6}
+          sx={{
+            display: 'flex',
+            justifyContent: 'center',
+            alignItems: 'center',
+          }}
+        >
+          <img
+            src="/Quadiro.png"
+            alt="Quadiro Logo"
+            style={{
+              width: isMobile ? '80%' : '60%',
+              height: 'auto',
+              maxWidth: '500px',
+              borderRadius: '8px',
+              boxShadow: '0px 4px 12px rgba(0, 0, 0, 0.1)',
+            }}
+          />
+        </Grid>
       </Grid>
-      <Grid
-        item
-        xs={12}
-        md={6}
-        lg={6}
-        style={{
-          display: "flex",
-          justifyContent: "center",
-          alignItems: "center",
-        }}
-      >
-        <img src="/Quadiro.png" style={{ width: "50%", height: 250 }} />
-      </Grid>
-    </Grid>
+    </Container>
   );
 }
