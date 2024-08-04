@@ -29,21 +29,3 @@ export async function PUT(request: NextRequest) {
     return NextResponse.json({ error: 'Error updating car' }, { status: 500 });
   }
 }
-
-
-export async function GET(request: NextRequest) {
-    const id = parseInt(request.nextUrl.pathname.split('/').pop() || '');
-
-  try {
-    const course = await prisma.cars.findUnique({
-      where: { id: Number(id) },
-    });
-    if (!course) {
-      return NextResponse.json({ error: 'Course not found' }, { status: 404 });
-    }
-    return NextResponse.json({ course });
-  } catch (error) {
-    console.error('Error fetching course:', error);
-    return NextResponse.json({ error: 'Error fetching course' }, { status: 500 });
-  }
-}

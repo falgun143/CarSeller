@@ -43,7 +43,11 @@ const Cars = () => {
 
     async function getCars() {
       try {
-        const response = await axios.get("/api/getcars");
+        const response = await axios.get("/api/getcars",{
+          headers: {
+            'Cache-Control': 'no-store',
+          },
+        });
         setCars(response.data.cars);
       } catch (error) {
         console.error("Error fetching cars:", error);
