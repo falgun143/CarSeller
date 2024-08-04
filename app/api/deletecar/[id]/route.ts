@@ -1,7 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
-import { PrismaClient } from "@prisma/client";
-
-const prisma = new PrismaClient();
+import prisma from "@/lib/prisma";
+import { revalidateTag } from 'next/cache';
 
 export async function DELETE(request: NextRequest) {
   const id = parseInt(request.nextUrl.pathname.split("/").pop() || "", 10);
@@ -14,6 +13,7 @@ export async function DELETE(request: NextRequest) {
         await prisma.cars.delete({
       where: { id },
     });
+   revalidateTag('cars')
 
     return NextResponse.json({ message: "Car Deleted successfully" });
   } catch (error) {

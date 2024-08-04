@@ -45,7 +45,7 @@ const Cars = () => {
       try {
         const response = await fetch("/api/getcars", {
           next: {
-            revalidate: 1, 
+            tags: ['cars'], 
           },
         });
         const data = await response.json();

@@ -1,12 +1,13 @@
 import { NextRequest, NextResponse } from "next/server";
 import prisma from "../../../lib/prisma";
+import { revalidateTag } from "next/cache";
 
 
 export async function POST(request: NextRequest) {
     const { carname, manufacturingdate, price,image,userId} = await request.json();
     try{
         console.log(carname, manufacturingdate, price,image,userId)
-        const result = await prisma.cars.create({ 
+        await prisma.cars.create({ 
            data:{
             carname,
            manufacturingdate,
@@ -15,7 +16,7 @@ export async function POST(request: NextRequest) {
             userId
            }
         });
-        console.log(result)
+        revalidateTag('cars');
        return NextResponse.json({message:"Added Car Successfully"},{status:200},)
 
     }
