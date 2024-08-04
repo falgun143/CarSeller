@@ -44,7 +44,9 @@ const Cars = () => {
     async function getCars() {
       try {
         const response = await fetch("/api/getcars", {
-        cache:"no-store"
+          next: {
+            revalidate: 1, 
+          },
         });
         const data = await response.json();
         setCars(data.cars);
