@@ -46,8 +46,8 @@ const Cars = () => {
         const response = await fetch("/api/getcars", {
         cache:"no-store"
         });
-        const cars = await response.json();
-        setCars(cars);
+        const data = await response.json();
+        setCars(data.cars);
       } catch (error) {
         console.error("Error fetching cars:", error);
       } finally {
