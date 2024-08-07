@@ -137,7 +137,7 @@ const Cars = () => {
 
   return (
     <>
-      <ToastContainer  autoClose={2000}  theme="dark" />
+      <ToastContainer  autoClose={1000}  theme="dark" />
       <Box sx={{ padding: 4 }}>
         <Typography variant="h4" sx={{ mb: 4, color: "#2ba000" }}>
           Car Dashboard

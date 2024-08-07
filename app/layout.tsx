@@ -26,8 +26,8 @@ export default async function RootLayout({ children }: { children: React.ReactNo
   }
 
   return (
-    <html lang="en" style={{ overflowX: "hidden" }}>
-      <body style={{ margin: 0 }} className={inter.className}>
+    <html lang="en" style={{overflowX:"hidden" }}>
+      <body style={{ margin: 0, overflowX:"hidden" }} className={inter.className}>
         <LoginProvider initialLogin={login} initialRole={role}>
           <AppBar>{children}</AppBar>
         </LoginProvider>

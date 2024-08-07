@@ -4,6 +4,8 @@ import React from "react";
 import { useRouter } from "next/navigation";
 import Cookies from "js-cookie";
 import { useLogin } from "../context/LoginContext";
+import SuprSendInbox, { SuprSendProvider } from "@suprsend/react-inbox";
+import "react-toastify/dist/ReactToastify.css";
 
 const Appbar = ({ children }: { children: React.ReactNode }) => {
   const router = useRouter();
@@ -30,6 +32,7 @@ const Appbar = ({ children }: { children: React.ReactNode }) => {
               md: "row",
               lg: "row",
             },
+            gap:5
           }}
         >
           <Typography
@@ -107,6 +110,12 @@ const Appbar = ({ children }: { children: React.ReactNode }) => {
                 </Button>
               </>
             )}
+               <SuprSendInbox   
+         workspaceKey="irQ1EZbPcX87e9oZulrj"
+      subscriberId="pIzG1VcpZ3dp3Ou1US8RKBvl1tS2OhclpWECzYOzNCU="
+      distinctId="palfalgun@gmail.com" 
+   
+      />
           </Box>
         </Box>
       </MuiAppBar>

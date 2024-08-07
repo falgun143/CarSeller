@@ -66,22 +66,22 @@ const Signup = () => {
   return (
     <>
       <ToastContainer  autoClose={3000} theme="dark" />
-      <Box
-        style={{
-          display: "flex",
-          justifyContent: "center",
-          alignItems: "center",
-        }}
-      >
-        <form onSubmit={onSubmit} style={{ width: "30%" }}>
+   
+        <form onSubmit={onSubmit} style={{ display:"flex", justifyContent: "center",width: "100%" }}>
           <Card
+
+          sx={{
+            width:{
+              xs:"100%",
+              md:"30%"
+            }
+          }}
             style={{
               display: "flex",
               flexDirection: "column",
               alignItems: "center",
               gap: 15,
               padding: 20,
-              width: "100%",
               marginTop: 100,
             }}
           >
@@ -134,7 +134,7 @@ const Signup = () => {
             </Button>
           </Card>
         </form>
-      </Box>
+
     </>
   );
 };

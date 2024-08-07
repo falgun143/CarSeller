@@ -63,57 +63,63 @@ const Login = () => {
   return (
     <>
       <ToastContainer autoClose={3000} theme="dark" />
-      <Box
+
+      <form
+        onSubmit={onSubmit}
         style={{
+          width: "100%",
           display: "flex",
           justifyContent: "center",
           alignItems: "center",
         }}
       >
-        <form onSubmit={onSubmit} style={{ width: "30%" }}>
-          <Card
-            style={{
-              display: "flex",
-              flexDirection: "column",
-              alignItems: "center",
-              gap: 15,
-              padding: 20,
-              width: "100%",
-              marginTop: 100,
+        <Card
+          sx={{
+            width: {
+              xs: "90%",
+              md: "30%",
+            },
+          }}
+          style={{
+            display: "flex",
+            flexDirection: "column",
+            alignItems: "center",
+            gap: 15,
+            padding: 20,
+            marginTop: 100,
+          }}
+        >
+          <Typography variant="h6" style={{ marginBottom: 20 }}>
+            Welcome Login Below
+          </Typography>
+          <TextField
+            onChange={(e) => {
+              Setusername(e.target.value);
             }}
+            required
+            label="Username"
+            fullWidth={true}
+            color="success"
+          ></TextField>
+          <TextField
+            onChange={(e) => {
+              SetPassword(e.target.value);
+            }}
+            required
+            label="Password"
+            type="password"
+            fullWidth={true}
+            color="success"
+          ></TextField>
+          <Button
+            variant="contained"
+            style={{ width: "50%", backgroundColor: "#36cc00" }}
+            type="submit"
           >
-            <Typography variant="h6" style={{ marginBottom: 20 }}>
-              Welcome Login Below
-            </Typography>
-            <TextField
-              onChange={(e) => {
-                Setusername(e.target.value);
-              }}
-              required
-              label="Username"
-              fullWidth={true}
-              color="success"
-            ></TextField>
-            <TextField
-              onChange={(e) => {
-                SetPassword(e.target.value);
-              }}
-              required
-              label="Password"
-              type="password"
-              fullWidth={true}
-              color="success"
-            ></TextField>
-            <Button
-              variant="contained"
-              style={{ width: "50%", backgroundColor: "#36cc00" }}
-              type="submit"
-            >
-              Login
-            </Button>
-          </Card>
-        </form>
-      </Box>
+            Login
+          </Button>
+        </Card>
+      </form>
     </>
   );
 };
