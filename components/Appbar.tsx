@@ -114,6 +114,7 @@ const Appbar = ({ children }: { children: React.ReactNode }) => {
          workspaceKey="irQ1EZbPcX87e9oZulrj"
       subscriberId="pIzG1VcpZ3dp3Ou1US8RKBvl1tS2OhclpWECzYOzNCU="
       distinctId="palfalgun@gmail.com" 
+      themeType="dark"
    
       />
           </Box>
