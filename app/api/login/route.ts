@@ -3,9 +3,23 @@ import { encode_jwt } from "@falgunpal/jwt-helper-ts";
 import prisma from "../../../lib/prisma";
 import bcrypt from "bcrypt";
 import { revalidateTag } from 'next/cache';
+import { LoginSchema } from "@/utils/validationSchema";
 
 export async function POST(request: NextRequest) {
-  const { username, password } = await request.json();
+  const parsedInput = LoginSchema.safeParse(await request.json());
+  if (!parsedInput.success) {
+    return NextResponse.json(
+      {
+        errors: parsedInput.error.issues.map((err) => ({
+          path: err.path[0],
+          message: err.message,
+        })),
+      },
+      { status: 405 }
+    );
+  }
+  const username = parsedInput.data.username;
+  const password = parsedInput.data.password;
 
   if (!process.env.NEXT_PUBLIC_JWT_SECRET) {
     return NextResponse.json({ message: 'Secret cannot be empty or undefined' }, { status: 401 });
